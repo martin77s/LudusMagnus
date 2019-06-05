@@ -504,9 +504,9 @@ Configuration IIS {
         (Split-Path $DomainCreds.UserName -Leaf), (Initialize-LudusMagnusPassword | ConvertTo-SecureString -AsPlainText -Force)
     )
 
-	$identityPassword = ($FlagPrefix + '-Fl@g8:{' + $Flag8Value + '}') -replace '\d_', '&_'
+	$identityPassword = ($FlagPrefix + ':{' + $Flag8Value + '}') 
     $AppPoolIdentity = New-Object System.Management.Automation.PSCredential -ArgumentList (
-        $FlagPrefix, ( $identityPassword | ConvertTo-SecureString -AsPlainText -Force)
+        'flag8', ( $identityPassword | ConvertTo-SecureString -AsPlainText -Force)
     )
 
     Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter 'IPEnabled=true and DHCPEnabled=true' | ForEach-Object {

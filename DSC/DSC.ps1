@@ -505,7 +505,7 @@ Configuration IIS {
     )
 
     $AppPoolIdentity = New-Object System.Management.Automation.PSCredential -ArgumentList (
-        $FlagPrefix, (($FlagPrefix + '-P@5z:{' + $Flag8Value + '}') | ConvertTo-SecureString -AsPlainText -Force)
+        $FlagPrefix, (($FlagPrefix + '-Fl@g8:{' + $Flag8Value + '}') | ConvertTo-SecureString -AsPlainText -Force)
     )
 
     Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter 'IPEnabled=true and DHCPEnabled=true' | ForEach-Object {

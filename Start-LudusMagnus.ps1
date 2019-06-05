@@ -162,7 +162,7 @@ if (-not (Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyCont
 }
 
 # Start the deployment
-$iCount = 1; $maxWait = 45
+$iCount = 1; $maxWait = 35
 try {
     $deploymentJob = New-AzResourceGroupDeployment @deploymentParams -AsJob
 	$global:__job = $deploymentJob

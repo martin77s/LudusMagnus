@@ -10,10 +10,13 @@
 
     [switch] $DetailedLocalFile,
 
-    [switch] $SkipWebApp
+    [switch] $SkipWebApp,
+	
+	[ValidatePattern('\w+')]
+	[string] $FlagPrefix = 'Flag'
 )
 
-$Version = '0.0.0.5'
+$Version = '0.0.0.6'
 
 Write-Host @"
 
@@ -115,6 +118,7 @@ $deploymentParams = @{
     ClientAllowedIP         = '{0}/32' -f $publicIP
     VmAdminPassword         = ($vmAdminPassword | ConvertTo-SecureString -AsPlainText -Force)
     DomainName              = $ADFQDN
+	FlagPrefix              = $FlagPrefix
     DeployWebApp            = if ($SkipWebApp) { 0 } else { 1 }
     ErrorVariable           = 'deploymentErrors'
     DeploymentDebugLogLevel = 'None' # All | None | RequestContent | ResponseContent

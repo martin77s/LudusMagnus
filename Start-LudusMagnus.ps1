@@ -151,7 +151,8 @@ if (-not (Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyCont
 $iCount = 1; $maxWait = 45
 try {
     $deploymentJob = New-AzResourceGroupDeployment @deploymentParams -AsJob
-	$global:x = $deploymentJob 
+	$global:__job = $deploymentJob
+	
     :waitDeployment do {
         Write-Verbose -Message "Waiting for the deployment to complete... ($iCount)" -Verbose
         Start-Sleep -Seconds 60

@@ -6,6 +6,7 @@ $envParams = @{
 	ParametersFileId  = $FlagsId
 	DetailedLocalFile = $true
 	SkipWebApp        = $true
+	Promiscuous       = $true
 	FlagPrefix        = 'BSidesTLV'
 }
 .\Start-LudusMagnus.ps1 @envParams 
